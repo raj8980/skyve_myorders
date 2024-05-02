@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+
+/* page header */
+h2 {
+	text-align: center !important;
+}
+
+/* data tables */
+.ui-datatable tbody td {
+	text-align: center;
+}
+.ui-datatable thead th {
+	padding: 0px 1rem !important
+}
+
+@media (min-width: 641px) {
+	.topbar-title {
+		font-size: 24px !important;
+		color: white;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 100%;
+	}
+
+}
+@media (max-width: 640px) {
+	.topbar-title {
+		display: none;
+	}
+}
+
+.topbar-menu li a span {
+	display: inline !important;
+} 
+
+@media(max-width: 1024px) {
+	.topbar-menu-tooltip {
+		display: none !important;
+	}	
+}

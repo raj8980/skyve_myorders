@@ -1,0 +1,81 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+					xmlns:f="http://java.sun.com/jsf/core"
+					xmlns:h="http://java.sun.com/jsf/html"
+					xmlns:ui="http://java.sun.com/jsf/facelets"
+					xmlns:p="http://primefaces.org/ui"
+					xmlns:pu="http://primefaces.org/ultima"
+					xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+					xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<div class="layout-topbar shadow-4">
+		<div class="layout-topbar-left">
+			<a href="#{bean.baseHref}" class="layout-topbar-logo">
+				<h:graphicImage name="images/skyve-logo-white.png" alt="logo" library="skyve" style="max-width: 90%;" />
+			</a>
+			<c:if test="#{showMenu}">
+				<a class="layout-menu-button shadow-6" data-p-ripple="true">
+					<i class="pi pi-chevron-right"></i>
+				</a>
+				<a class="layout-topbar-mobile-button"
+						onclick="$('.layout-wrapper').toggleClass('layout-topbar-mobile-active')"
+						data-p-ripple="true"
+						data-p-styleclass="{ selector: '.layout-topbar-right', enterActiveClass: 'overlay-enter layout-topbar-mobile-active', enterToClass: 'layout-topbar-mobile-active', leaveActiveClass: 'overlay-leave layout-topbar-mobile-active' }">
+					<i class="pi pi-ellipsis-v fs-large"></i>
+				</a>
+			</c:if>
+		</div>
+		<div class="layout-topbar-right">
+			<div class="layout-topbar-actions-left">
+				<p:outputPanel id="title" layout="inline" styleClass="topbar-title">
+					#{title}
+					<p:autoUpdate />
+				</p:outputPanel>
+			</div>
+			<c:if test="#{showSwitchMode or showLogout}">
+				<div class="layout-topbar-actions-right">
+					<ul class="layout-topbar-items">
+						<li class="layout-topbar-item">
+							<a class="layout-topbar-action flex flex-row justify-content-center align-items-center px-2 rounded-circle"
+									data-p-ripple="true"
+									data-p-styleclass="{ selector: '@next', enterClass: 'hidden', enterActiveClass: 'overlay-enter', leaveToClass: 'hidden', leaveActiveClass: 'overlay-leave', hideOnOutsideClick: true }">
+								<span style="font-size:1.5em;" class="topbar-icon">#{user.name}</span>
+								<p:spacer width="10px" />
+								<i style="font-size:1em;" class="topbar-icon fa fa-angle-down"></i>
+							</a>
+							<ul class="layout-topbar-action-panel shadow-6 hidden">
+								<c:if test="#{showSwitchMode}">
+									<li class="layout-topbar-action-item">
+										<h:form id="uxuiform" prependId="false"> 
+											<h:inputHidden value="#{bean.csrfToken}">
+												<p:autoUpdate />
+											</h:inputHidden>
+											<p:commandLink action="#{bean.setUxUi('desktop')}"
+															onsuccess="location.reload()"
+															process="@form"
+															update="@none"
+															ignoreAutoUpdate="true"
+															style="text-decoration:none"
+															styleClass="flex flex-row align-items-center gap-2"
+															data-p-ripple="true"
+															data-p-styleclass-hide="true">
+												<i class="fa fa-share-square-o"></i>
+												<span>Switch Mode</span>
+											</p:commandLink>
+										</h:form>
+									</li>
+								</c:if>
+								<c:if test="#{showLogout}">
+									<li class="layout-topbar-action-item">
+										<a href="loggedOut" class="flex flex-row align-items-center gap-2" data-p-ripple="true" data-p-styleclass-hide="true">
+											<i class="fa fa-power-off"></i>
+											<span>Logout</span>
+										</a>
+									</li>
+								</c:if>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</c:if>
+		</div>
+	</div>
+</ui:composition>

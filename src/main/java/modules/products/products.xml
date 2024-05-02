@@ -15,6 +15,7 @@
                 <document name="ProductUnitGroup" permission="_R__C"/>
                 <document name="ProductPriceList" permission="_R__C"/>
             </privileges>
+            <accesses/>
         </role>
         <role name="Maintainer">
             <description><![CDATA[Enough privileges to create and edit Products documents.]]></description>
@@ -23,10 +24,11 @@
                 <document name="ProductUnitGroup" permission="CRUDC"/>
                 <document name="ProductPriceList" permission="CRUDC"/>
             </privileges>
+            <accesses/>
         </role>
     </roles>
     <menu>
-   		<list document="ProductPriceList" name="Product Price Lists">
+        <list document="ProductPriceList" name="Product Price Lists">
             <role name="Maintainer"/>
             <role name="Viewer"/>
         </list>

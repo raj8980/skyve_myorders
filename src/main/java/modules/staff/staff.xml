@@ -13,26 +13,29 @@
             <privileges>
                 <document name="StaffList" permission="CRU_C"/>
             </privileges>
+            <accesses/>
         </role>
         <role name="StaffManager">
             <description><![CDATA[Staff Manager - Create and manage staff]]></description>
             <privileges>
                 <document name="StaffList" permission="CRUDC"/>
             </privileges>
+            <accesses/>
         </role>
         <role name="ProjectManager">
             <description><![CDATA[Project Manager - Create and manage jobs]]></description>
             <privileges>
                 <document name="StaffList" permission="_RU_C"/>
             </privileges>
+            <accesses/>
         </role>
     </roles>
     <menu>
-        <edit document="StaffList" name="My Staff Information">
+        <edit document="StaffList" name="Staff List">
             <role name="Staff"/>
             <role name="StaffManager"/>
         </edit>
-        <list document="StaffList" name="Staff">
+        <list document="StaffList" name="Staff List">
             <role name="StaffManager"/>
         </list>
     </menu>

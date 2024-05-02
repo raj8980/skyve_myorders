@@ -6,7 +6,6 @@
     <iconStyleClass>fa fa-clipboard</iconStyleClass>
     <bizKey expression="{name}"/>
     <attributes>
-    	<!-- Unit Details -->
         <text required="true" name="name">
             <displayName>Unit Group Name</displayName>
             <description><![CDATA[The unit group name]]></description>
@@ -22,10 +21,9 @@
             <length>100</length>
         </text>
         <association type="aggregation" name="productPriceList">
-        	<displayName>Product Price List</displayName>
-        	<description><![CDATA[The price list of the unit group]]></description>
-        	<documentName>ProductPriceList</documentName>
+            <displayName>Product Price List</displayName>
+            <description><![CDATA[The price list of the unit group]]></description>
+            <documentName>ProductPriceList</documentName>
         </association>
-	
     </attributes>
 </document>

@@ -6,7 +6,6 @@
     <iconStyleClass>fa fa-info-circle</iconStyleClass>
     <bizKey expression="{name}"/>
     <attributes>
-    	<!-- Product Details -->
         <text required="true" name="name">
             <displayName>Product Name</displayName>
             <description><![CDATA[Product name]]></description>
@@ -22,18 +21,17 @@
             <description><![CDATA[A description of the product]]></description>
         </memo>
         <date name="validFrom">
-        	<displayName>Valid From</displayName>
-        	<description><![CDATA[The date the product is valid]]></description>
+            <displayName>Valid From</displayName>
+            <description><![CDATA[The date the product is valid]]></description>
         </date>
         <date name="validTo">
-        	<displayName>Valid To</displayName>
-        	<description><![CDATA[The expiration date of the product]]></description>
+            <displayName>Valid To</displayName>
+            <description><![CDATA[The expiration date of the product]]></description>
         </date>
-        <!-- Unit Details -->
-        <association type="aggregation" name="productUnitGroup" required="true">
-        	<displayName>Product Unit Group</displayName>
-        	<description><![CDATA[The unit group of the product]]></description>
-        	<documentName>ProductUnitGroup</documentName>
+        <association required="true" type="aggregation" name="productUnitGroup">
+            <displayName>Product Unit Group</displayName>
+            <description><![CDATA[The unit group of the product]]></description>
+            <documentName>ProductUnitGroup</documentName>
         </association>
     </attributes>
     <conditions>

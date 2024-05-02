@@ -5,44 +5,42 @@
     <pluralAlias>Interactions</pluralAlias>
     <bizKey expression="{title}"/>
     <attributes>
-   		<text name="title" required="true">
-   			<displayName>Title</displayName>
-   			<description><![CDATA[The title of the interaction]]></description>
-   			<length>50</length>
-   		</text>
-   		<association type="aggregation" name="user" required="true">
-			<displayName>User</displayName>
-			<description><![CDATA[The user who performed the interaction]]></description>
-			<documentName>User</documentName>
-		</association>
-    	<memo name="description">
-        	<displayName>Description</displayName>
-        	<description><![CDATA[The description of the interaction]]></description>
+        <text required="true" name="title">
+            <displayName>Title</displayName>
+            <description><![CDATA[The title of the interaction]]></description>
+            <length>50</length>
+        </text>
+        <association required="true" type="aggregation" name="user">
+            <displayName>User</displayName>
+            <description><![CDATA[The user who performed the interaction]]></description>
+            <documentName>User</documentName>
+        </association>
+        <memo name="description">
+            <displayName>Description</displayName>
+            <description><![CDATA[The description of the interaction]]></description>
         </memo>
-    	<enum name="type" required="true">
-    		<displayName>Type</displayName>
-    		<description><![CDATA[The type of interaction]]></description>
-    		<values>
-    			<value code="Email"/>
-    			<value code="Phone"/>
-    			<value code="Meeting"/>
-    			<value code="Social Media"/>
-    			<value code="Comment"/>
-    			<value code="Upload"/>
-    			<value code="Other"/>
-    		</values>
-    	</enum>
-        <dateTime name="interactionTime" required="true">
-        	<displayName>Time of Interaction</displayName>
-        	<description><![CDATA[The time the interaction took place]]></description>
+        <enum required="true" name="type">
+            <displayName>Type</displayName>
+            <description><![CDATA[The type of interaction]]></description>
+            <values>
+                <value code="Email"/>
+                <value code="Phone"/>
+                <value code="Meeting"/>
+                <value code="Social Media"/>
+                <value code="Comment"/>
+                <value code="Upload"/>
+                <value code="Other"/>
+            </values>
+        </enum>
+        <dateTime required="true" name="interactionTime">
+            <displayName>Time of Interaction</displayName>
+            <description><![CDATA[The time the interaction took place]]></description>
         </dateTime>
-        
         <content name="document">
-        	<displayName>Document</displayName>
+            <displayName>Document</displayName>
         </content>
-        
-        <markup name="interactionTemplate" persistent="false" audited="false" trackChanges="false" usage="view" >
-        	<displayName>Interactions</displayName>
-        </markup>        
+        <markup persistent="false" trackChanges="false" audited="false" usage="view" name="interactionTemplate">
+            <displayName>Interactions</displayName>
+        </markup>
     </attributes>
 </document>

@@ -78,39 +78,34 @@
             <description><![CDATA[The account's postal code]]></description>
             <length>10</length>
         </text>
-        
-        <collection name="interactions" type="composition">
-        	<displayName>Interactions</displayName>
-        	<documentName>Interaction</documentName>
-        	<minCardinality>0</minCardinality>
-        	<ordering>
-        		<order sort="descending" by="interactionTime"/>
-        	</ordering>
+        <collection type="composition" name="interactions">
+            <displayName>Interactions</displayName>
+            <documentName>Interaction</documentName>
+            <minCardinality>0</minCardinality>
+            <ordering>
+                <order sort="descending" by="interactionTime"/>
+            </ordering>
         </collection>
-        
-        <!-- quick add interaction attributes -->
-		<memo name="interactionDescription" persistent="false">
-			<displayName>Description</displayName>
-		</memo>
-		<enum name="interactionType" documentRef="Interaction" attributeRef="type" persistent="false">
-			<displayName>Type</displayName>
-		</enum>
-		<content name="document" persistent="false" >
-			<displayName>Document</displayName>
-		</content>
-		
-		<integer name="selectedTab" persistent="true" usage="view" trackChanges="false">
-			<displayName>Selected Tab</displayName>
-		</integer>
-		
-		<markup name="flowbar" persistent="false" usage="view" trackChanges="false" audited="false">
-			<displayName>Flowbar</displayName>
-		</markup>
-		
+        <memo persistent="false" name="interactionDescription">
+            <displayName>Description</displayName>
+        </memo>
+        <enum documentRef="Interaction" attributeRef="type" persistent="false" name="interactionType">
+            <displayName>Type</displayName>
+            <values/>
+        </enum>
+        <content persistent="false" name="document">
+            <displayName>Document</displayName>
+        </content>
+        <integer trackChanges="false" usage="view" name="selectedTab">
+            <displayName>Selected Tab</displayName>
+        </integer>
+        <markup persistent="false" trackChanges="false" audited="false" usage="view" name="flowbar">
+            <displayName>Flowbar</displayName>
+        </markup>
     </attributes>
     <conditions>
-    	<condition name="uploadSelected">
-    		<expression><![CDATA[getInteractionType() != null && getInteractionType().name() == "upload"]]></expression>
-    	</condition>
+        <condition name="uploadSelected">
+            <expression><![CDATA[getInteractionType() != null && getInteractionType().name() == "upload"]]></expression>
+        </condition>
     </conditions>
 </document>

@@ -5,11 +5,11 @@
     <defaultTimeConverter>HH24_MI</defaultTimeConverter>
     <defaultDateTimeConverter>DD_MMM_YYYY_HH24_MI</defaultDateTimeConverter>
     <defaultTimestampConverter>DD_MMM_YYYY_HH24_MI_SS</defaultTimestampConverter>
-    <modules homeModule="admin">
+    <modules homeModule="products">
         <module name="admin"/>
-        <module name="customers"/>
         <module name="products"/>
         <module name="sales"/>
+        <module name="customers"/>
         <module name="staff"/>
     </modules>
     <interceptors>

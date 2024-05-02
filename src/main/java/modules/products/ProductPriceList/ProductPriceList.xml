@@ -6,7 +6,6 @@
     <iconStyleClass>fa fa-dollar</iconStyleClass>
     <bizKey expression="{name}"/>
     <attributes>
-    	<!-- Price List Details -->
         <text required="true" name="name">
             <displayName>Price List Name</displayName>
             <description><![CDATA[The price list name]]></description>
@@ -17,26 +16,25 @@
             <description><![CDATA[A description of the price list]]></description>
         </memo>
         <longInteger required="true" name="retailPrice">
-        	<displayName>Retail Price Per Unit</displayName>
-        	<description><![CDATA[The retail price of the product]]></description>
+            <displayName>Retail Price Per Unit</displayName>
+            <description><![CDATA[The retail price of the product]]></description>
         </longInteger>
         <longInteger required="true" name="bulkPrice">
-        	<displayName>Bulk Price Per Unit</displayName>
-        	<description><![CDATA[The retail price of the product]]></description>
+            <displayName>Bulk Price Per Unit</displayName>
+            <description><![CDATA[The retail price of the product]]></description>
         </longInteger>
         <date name="startDate">
-        	<displayName>Start Date</displayName>
-        	<description><![CDATA[The start date of the price list]]></description>
+            <displayName>Start Date</displayName>
+            <description><![CDATA[The start date of the price list]]></description>
         </date>
         <date name="endDate">
-        	<displayName>End Date</displayName>
-        	<description><![CDATA[The end date of the price list]]></description>
+            <displayName>End Date</displayName>
+            <description><![CDATA[The end date of the price list]]></description>
         </date>
         <text name="currency">
             <displayName>Currency</displayName>
             <description><![CDATA[The currency used for this price list]]></description>
             <length>100</length>
         </text>
-        	
     </attributes>
 </document>

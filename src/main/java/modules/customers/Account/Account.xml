@@ -6,15 +6,15 @@
     <iconStyleClass>fa fa-book</iconStyleClass>
     <bizKey expression="{accountName}"/>
     <attributes>
-    	<association type="aggregation" name="currentUser" >
-			<displayName>Current User</displayName>
-			<documentName>User</documentName>
-		</association>
-		<text required="true" name="accountManager">
-			<displayName>Account Manager</displayName>
-			<description><![CDATA[The manager of this account]]></description>
-			<length>200</length>
-		</text>
+        <association type="aggregation" name="currentUser">
+            <displayName>Current User</displayName>
+            <documentName>User</documentName>
+        </association>
+        <text required="true" name="accountManager">
+            <displayName>Account Manager</displayName>
+            <description><![CDATA[The manager of this account]]></description>
+            <length>200</length>
+        </text>
         <text required="true" name="accountName">
             <displayName>Account Name</displayName>
             <description><![CDATA[The account name]]></description>
@@ -54,7 +54,7 @@
             <displayName>Start Date</displayName>
             <description><![CDATA[The date the account began]]></description>
         </date>
-      	<text name="line1">
+        <text name="line1">
             <displayName>Line 1</displayName>
             <description><![CDATA[The account's street]]></description>
             <length>100</length>
@@ -79,49 +79,43 @@
             <description><![CDATA[The account's postal code]]></description>
             <length>10</length>
         </text>
- 
         <geometry name="location">
-        	<displayName>Location</displayName>
+            <displayName>Location</displayName>
         </geometry>
         <association required="true" type="aggregation" name="primaryContact">
             <displayName>Primary Contact</displayName>
             <description><![CDATA[The account's primary contact]]></description>
             <documentName>ContactDetail</documentName>
-        </association>  
-        
-        <collection name="interactions" type="composition">
-        	<displayName>Interactions</displayName>
-        	<documentName>Interaction</documentName>
-        	<minCardinality>0</minCardinality>
-        	<ordering>
-        		<order sort="descending" by="interactionTime"/>
-        	</ordering>
+        </association>
+        <collection type="composition" name="interactions">
+            <displayName>Interactions</displayName>
+            <documentName>Interaction</documentName>
+            <minCardinality>0</minCardinality>
+            <ordering>
+                <order sort="descending" by="interactionTime"/>
+            </ordering>
         </collection>
-        
-        <integer name="selectedTab" persistent="true" usage="view" trackChanges="false">
-			<displayName>Selected Tab</displayName>
-			<validator max="2" min="0"/>
-		</integer>
-        
-        <!-- quick add interaction attributes -->
-		<memo name="interactionDescription" persistent="false">
-			<displayName>Description</displayName>
-		</memo>
-		<enum name="interactionType" documentRef="Interaction" attributeRef="type" persistent="false">
-			<displayName>Type</displayName>
-		</enum>
-		<content name="document">
-			<displayName>Document</displayName>
-		</content>
-		
-              
+        <integer trackChanges="false" usage="view" name="selectedTab">
+            <displayName>Selected Tab</displayName>
+            <validator max="2" min="0"/>
+        </integer>
+        <memo persistent="false" name="interactionDescription">
+            <displayName>Description</displayName>
+        </memo>
+        <enum documentRef="Interaction" attributeRef="type" persistent="false" name="interactionType">
+            <displayName>Type</displayName>
+            <values/>
+        </enum>
+        <content name="document">
+            <displayName>Document</displayName>
+        </content>
     </attributes>
     <conditions>
         <condition name="hasCurrent">
             <expression><![CDATA[primaryContact != null]]></expression>
         </condition>
         <condition name="uploadSelected">
-        	<expression><![CDATA[getInteractionType() != null && getInteractionType().name() == "upload"]]></expression>
+            <expression><![CDATA[getInteractionType() != null && getInteractionType().name() == "upload"]]></expression>
         </condition>
     </conditions>
 </document>

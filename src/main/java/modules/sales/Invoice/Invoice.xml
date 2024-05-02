@@ -6,68 +6,58 @@
     <iconStyleClass>fa fa-envelope</iconStyleClass>
     <bizKey expression="{invoiceId}"/>
     <attributes>
-    	<!-- Summary -->
         <text required="true" name="invoiceId">
-        	<displayName>Invoice ID</displayName>
-        	<description><![CDATA[The ID for this invoice]]></description>
-        	<length>8</length>
-        </text> 
-        <text name="name" required="true">
-        	<displayName>Invoice Name</displayName>
-        	<description><![CDATA[The name of the invoice]]></description>
-        	<length>200</length>
+            <displayName>Invoice ID</displayName>
+            <description><![CDATA[The ID for this invoice]]></description>
+            <length>8</length>
+        </text>
+        <text required="true" name="name">
+            <displayName>Invoice Name</displayName>
+            <description><![CDATA[The name of the invoice]]></description>
+            <length>200</length>
         </text>
         <association required="true" type="aggregation" name="order">
-        	<displayName>Order ID</displayName>
-        	<description><![CDATA[The order associated with this invoice]]></description>
-        	<documentName>Order</documentName>
+            <displayName>Order ID</displayName>
+            <description><![CDATA[The order associated with this invoice]]></description>
+            <documentName>Order</documentName>
         </association>
-     
-        <association type="aggregation" name="invoiceStatus" required="true" >
-        	<displayName>Invoice Status</displayName>
-        	<description><![CDATA[THe current status of this invoice]]></description>
-        	<documentName>Configuration</documentName>
-        	<queryName>qInvoiceStatus</queryName>
+        <association required="true" type="aggregation" name="invoiceStatus">
+            <displayName>Invoice Status</displayName>
+            <description><![CDATA[THe current status of this invoice]]></description>
+            <documentName>Configuration</documentName>
+            <queryName>qInvoiceStatus</queryName>
         </association>
         <memo name="description">
-        	<displayName>Description</displayName>
-        	<description><![CDATA[A description of the invoice]]></description>
+            <displayName>Description</displayName>
+            <description><![CDATA[A description of the invoice]]></description>
         </memo>
-        
-        <!-- Shipping/Address Details -->
         <date name="deliveryDate">
-        	<displayName>Delivery Date</displayName>
-        	<description><![CDATA[The date the order is delivered]]></description>
+            <displayName>Delivery Date</displayName>
+            <description><![CDATA[The date the order is delivered]]></description>
         </date>
         <date name="dueDate">
-        	<displayName>Due Date</displayName>
-        	<description><![CDATA[The date the order is due]]></description>
+            <displayName>Due Date</displayName>
+            <description><![CDATA[The date the order is due]]></description>
         </date>
-        
         <association required="true" type="aggregation" name="account">
-        	<displayName>Account</displayName>
-        	<description><![CDATA[The account for the invoice]]></description>
-        	<documentName>Account</documentName>
+            <displayName>Account</displayName>
+            <description><![CDATA[The account for the invoice]]></description>
+            <documentName>Account</documentName>
         </association>
-        
-		<!-- Product Details -->
-		<longInteger name="total" required="true">
-        	<displayName>Total</displayName>
-        	<description><![CDATA[The total for this invoice]]></description>
-        </longInteger>    	
-                         
-        <integer name="selectedTab" persistent="true" usage="view" trackChanges="false">
-			<displayName>Selected Tab</displayName>
-		</integer>
+        <longInteger required="true" name="total">
+            <displayName>Total</displayName>
+            <description><![CDATA[The total for this invoice]]></description>
+        </longInteger>
+        <integer trackChanges="false" usage="view" name="selectedTab">
+            <displayName>Selected Tab</displayName>
+        </integer>
     </attributes>
-    
     <conditions>
-    	<condition name="orderSelected">
-    		<expression><![CDATA[order != null]]></expression>
-    	</condition>
-    	<condition name="uploadSelected">
-    		<expression><![CDATA[getAccount() != null && getAccount().getInteractionType() != null && getAccount().getInteractionType().name() == "upload"]]></expression>
-    	</condition>
+        <condition name="orderSelected">
+            <expression><![CDATA[order != null]]></expression>
+        </condition>
+        <condition name="uploadSelected">
+            <expression><![CDATA[getAccount() != null && getAccount().getInteractionType() != null && getAccount().getInteractionType().name() == "upload"]]></expression>
+        </condition>
     </conditions>
-    
 </document>
